@@ -9,4 +9,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### Configurations
 
-**You need to add your API_KEY inside the .env file on the root folder.
+You need to add your API_KEY inside the .env file on the root folder.
+**After updating the .env file you must restart the server.**
