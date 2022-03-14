@@ -20,6 +20,5 @@ function truncateString(str, num = 50) {
 
 let API_BASE_URL = 'https://api.spoonacular.com';
 let API_KEY = process.env.REACT_APP_API_KEY;
-console.log("API KEY", API_KEY);
 
 export { estimatedReadingTime, stripHTML, truncateString, API_BASE_URL, API_KEY };
