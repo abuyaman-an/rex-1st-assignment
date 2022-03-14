@@ -1,4 +1,4 @@
-## Available Scripts
+## Da'Recipe: ReX First Assignment
 
 In the project directory, you can run:
 
