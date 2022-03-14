@@ -697,6 +697,7 @@ body {
             display: flex;
             gap: var(--space-sm);
             margin-top: var(--space-md);
+            flex-wrap: wrap;
         }
 
         &__dish-type {
