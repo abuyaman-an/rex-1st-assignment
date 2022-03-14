@@ -46,7 +46,7 @@ const RecipeDetails = () => {
                     </section>
                 </div>
             </div>
-            <div className="recipe-details main">
+            <div className="recipe-details main" aria-busy={loading}>
                 <img className="recipe-details__featured-img" src={recipeData.image} alt={recipeData.title} />
                 <div className="recipe-details__container">
                     <div className="recipe-details__meta">

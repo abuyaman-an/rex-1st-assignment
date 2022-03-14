@@ -4,20 +4,25 @@ import RecipesList from "../screens/homepage/components/recipes-list";
 import LoadingIndicator from "./loading";
 import NoResultsImage from "../assets/image/no-results.svg";
 
-const SearchBar = ({ list, value, onChange, busy }) => {
+const SearchBar = ({ value, onChange, busy }) => {
+    /**
+     * A search bar component that includes only the search bar with its decoration view.
+     * @param {string} value - The value of the search input.
+     * @param {function} onChange - Callback function that gets called on search input onChange.
+     * @param {boolean} busy - Indicates if the input is busy searching for content. For (aria-busy) attribute.
+     */
     return (
         <div className={`search__bar ${value.trim() ? "active" : ""}`}>
             <i className="search__bar__icon las la-search"></i>
             <label className="search__bar__label" id="search-recipes-label">Search recipes</label>
             <input
-                list={list}
                 type="search"
                 value={value}
                 onChange={onChange}
                 className="search__bar__input"
                 placeholder="Search for recipes.."
                 aria-labelledby="search-recipes-label"
-                aria-busy={busy ? "true" : "false"}
+                aria-busy={busy ?? "false"}
             />
         </div>
     )
@@ -78,37 +83,42 @@ const Search = () => {
         <div className="search">
             <SearchBar value={term} busy={loading} onChange={(e) => setTerm(e.target.value)} />
             {
+                // Show the suggestions if any exists.
                 term.trim() && results.length > 0 &&
                 <div className="search__suggestions">
                     {suggestions.map(suggestion => <span onClick={() => setTerm(suggestion)} title={suggestion} className="search__suggestion">{truncateString(suggestion, 30)}</span>)}
                 </div>
             }
-            {term.trim() ? !loading ? (
-                results.length ?
-                    <div className="search__results">
-                        <RecipesList
-                            name={`${results.length} search results for "${term}"`}
-                            recipes={results}
-                        />
-                    </div>
+            {
+                // If there's a search value(term) and it is not loading, then check if there are results (results.length > 0).
+                // if so show search results, else show no results found message.
+                // Otherwise it means it's still loading, show the loading indicator
+                term.trim() ? !loading ? (
+                    results.length ?
+                        <div className="search__results">
+                            <RecipesList
+                                name={`${results.length} search results for "${term}"`}
+                                recipes={results}
+                            />
+                        </div>
+                        :
+                        <div className="search__no-results">
+                            <div className="search__no-results__img-wrapper">
+                                <img className="search__no-results__img" src={NoResultsImage} alt="No results"></img>
+                            </div>
+                            <div className="search__no-results__message">
+                                <h2>No results</h2>
+                                <p>We found no results matching your search for "{term}",<b /> we know you're mad but, we're sorry.</p>
+                            </div>
+                        </div>
+                )
                     :
-                    <div className="search__no-results">
-                        <div className="search__no-results__img-wrapper">
-                            <img className="search__no-results__img" src={NoResultsImage} alt="No results"></img>
+                    (
+                        <div className="search__loading">
+                            <LoadingIndicator />
+                            <p className="search__loading__message">Searching...</p>
                         </div>
-                        <div className="search__no-results__message">
-                            <h2>No results</h2>
-                            <p>We found no results matching your search for "{term}",<b /> we know you're mad but, we're sorry.</p>
-                        </div>
-                    </div>
-            )
-                :
-                (
-                    <div className="search__loading">
-                        <LoadingIndicator />
-                        <p className="search__loading__message">Searching...</p>
-                    </div>
-                ) : <></>
+                    ) : <></>
             }
         </div>
     );
