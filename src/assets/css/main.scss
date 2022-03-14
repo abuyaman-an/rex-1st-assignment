@@ -2,6 +2,7 @@
 @import 'include-media';
 
 :root {
+    // General colors
     --main-color: #F2B5BD;
     --main-color-d1: #aa8086;
     --secondary-color: #7FC8A7;
@@ -21,12 +22,14 @@
     --success-color: #358f80;
     --success-light-color: #88d4ab;
 
+    // Spacing
     --space-2xs: 2px;
     --space-xs: 5px;
     --space-sm: 10px;
     --space-md: 15px;
     --space-lg: 20px;
 
+    // Padding
     --padding-xs: 5px;
     --padding-sm: 10px;
     --padding-md: 15px;
@@ -140,7 +143,7 @@ img {
         transition: .3s;
         background-color: var(--background-color);
 
-        &__label{
+        &__label {
             display: none;
         }
 
@@ -685,7 +688,6 @@ body {
         background-size: cover;
         padding: 20px;
         position: relative;
-        // background-color: var(--main-color);
 
         &>div {
             position: relative;
@@ -706,10 +708,6 @@ body {
         }
     }
 }
-
-
-//sm
-@media (min-width: 640px) {}
 
 //md
 @media (min-width: 768px) {
@@ -740,7 +738,6 @@ body {
     }
 
     .main-content {
-
         &__header {
             min-height: 350px;
 
@@ -757,8 +754,6 @@ body {
     }
 
     .recipes-list {
-        &__title {}
-
         &__list {
             grid-template-columns: repeat(3, 1fr);
         }
@@ -815,7 +810,7 @@ body {
         margin: 0 3px;
         border-radius: 50%;
         border: var(--border-width) solid var(--border-color);
-        animation: spinner4 var(--animation-duration) ease-in-out infinite;
+        animation: spinner var(--animation-duration) ease-in-out infinite;
 
         @for $i from 1 through 3 {
             &:nth-child(3n + #{$i}) {
@@ -825,20 +820,18 @@ body {
     }
 
     margin: 20px 0;
+}
 
-    @keyframes spinner4 {
+@keyframes spinner {
 
-        0%,
-        100% {
-            transform: translateY(15px);
-        }
-
-        50% {
-            transform: translateY(-15px);
-        }
+    0%,
+    100% {
+        transform: translateY(15px);
     }
 
-
+    50% {
+        transform: translateY(-15px);
+    }
 }
 
 @keyframes shine {
