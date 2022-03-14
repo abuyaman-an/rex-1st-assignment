@@ -2,8 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { stripHTML, truncateString } from '../../../commons/functions/commons';
 
-const SingleRecipeItem = ({ image, title, description, link, dishTypes, healthScore, veryHealthy, loading }) => {
+const SingleRecipeItem = ({ image, title, description, link, dishTypes, veryHealthy, loading }) => {
+    /**
+     * Represents a single recipe item(card) in a list of recipes e.g. (RecipesList)
+     * @param {string} image - An image URL to show the recipe image
+     * @param {string} title - The recipe title.
+     * @param {string} [description] - (optional) The recipe description.
+     * @param {string} link - The URL that the title link takes you to.
+     * @param {Array} [dishTypes] - (optional) A list of dish types strings.
+     * @param {boolean} [veryHealthy] - (optional) Shows if this recipe is a healthy recipe
+     * @param {boolean} [loading] - (optional) Shows if the card/recipe is loading.
+     */
 
+    // If loading it shows an empty card that have some loading animations.
     if (loading)
         return (
             <div className="recipes-list__single-container loading">
@@ -25,6 +36,7 @@ const SingleRecipeItem = ({ image, title, description, link, dishTypes, healthSc
         <div className="recipes-list__single-container">
             <div className="recipes-list__single">
                 {
+                    // If veryHealthy is true shows a health badge on the recipe.
                     veryHealthy &&
                     <i className="recipes-list__single__health-score las la-apple-alt"></i>
                 }
@@ -46,7 +58,8 @@ const SingleRecipeItem = ({ image, title, description, link, dishTypes, healthSc
                     <Link to={link}>
                         <h2 title={title} className="recipes-list__single__title">{truncateString(title, 40)}</h2>
                     </Link>
-                    {description &&
+                    {
+                        description &&
                         <p className="recipes-list__single__desc">{truncateString(stripHTML(description))}</p>
                     }
                     <div className="recipes-list__single__dish-types">

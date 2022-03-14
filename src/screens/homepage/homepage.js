@@ -7,10 +7,14 @@ import Search from "../../components/search";
 
 
 const Homepage = () => {
+    /**
+     * The homepage screen, shows two lists of recipes in addition to a search functionality.
+     */
     const [randomRecipes, setRandomRecipes] = useState([]);
     const [healthRecipes, setHealthRecipes] = useState([]);
 
     const fetchRandomRecipes = async (limit = 4) => {
+        // Fetches some random recipes to show in the random recipes section. 
         try {
             let results = await fetch(`${API_BASE_URL}/recipes/random?number=${limit}&apiKey=${API_KEY}`);
             results = await results.json();
@@ -22,6 +26,7 @@ const Homepage = () => {
     }
 
     const fetchHealthRecipes = async (limit = 4) => {
+        // Fetches some healthy recipes to show in the healthy recipes section. 
         try {
             let results = await fetch(`${API_BASE_URL}/recipes/complexSearch?veryHealthy=true&number=${limit}&apiKey=${API_KEY}`);
             results = await results.json();
@@ -36,6 +41,7 @@ const Homepage = () => {
     }
 
     useEffect(() => {
+        // Get sections recipes on mount
         fetchRandomRecipes(4);
         fetchHealthRecipes(4);
     }, [])

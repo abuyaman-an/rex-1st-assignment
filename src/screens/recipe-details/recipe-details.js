@@ -5,13 +5,16 @@ import { LoadingScreen } from "../../components/loading";
 import Parser from 'html-react-parser';
 
 const RecipeDetails = () => {
-
+    /**
+     * A screen that shows one recipe in details
+     */
     const postContent = useRef(null);
     const { id } = useParams();
     const [recipeData, setRecipeData] = useState({});
     const [loading, isLoading] = useState(true);
 
     const fetchRecipeDetails = async () => {
+        // Fetch(get) recipe details based on the recipe ID.
         isLoading(true);
         try {
             let results = await fetch(`${API_BASE_URL}/recipes/${id}/information?apiKey=${API_KEY}`);
@@ -26,9 +29,11 @@ const RecipeDetails = () => {
     }
 
     useEffect(() => {
+        // Fetch recipe details on mount
         fetchRecipeDetails();
-    },[])
+    }, [])
 
+    // If still loading the request, show a loading indicator.
     if (loading)
         return (
             <div className="recipe-details main loading">

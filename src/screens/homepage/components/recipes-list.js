@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import SingleRecipeItem from "./single-recipe-item";
 
 const RecipesList = ({ name, recipes, numToExpect, actionComponent, actionOnClick }) => {
