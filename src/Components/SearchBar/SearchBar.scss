@@ -1,0 +1,54 @@
+@import "../../ThemeStyles/main";
+.search-bar {
+    position: relative;
+    height: 50px;
+    display: flex;
+    padding: 0 var(--space-md);
+    gap: var(--space-md);
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: var(--space-lg);
+    border: var(--border-width) solid var(--border-color);
+    transition: .3s;
+    background-color: var(--background-color);
+
+    &__label {
+        display: none;
+    }
+
+    &__input {
+        flex: 1;
+        height: 100%;
+        border: none;
+        outline: none;
+        font-size: 14px;
+        background-color: transparent;
+    }
+
+    &__icon {
+        pointer-events: none;
+        color: var(--border-color);
+        font-size: 24px;
+        transition: .3s;
+    }
+
+    &+div {
+        margin-top: var(--space-lg);
+    }
+
+    @include media(">=desktop") {
+
+        &:focus-within,
+        &.active {
+            box-shadow: 0 10px 0 var(--shadow-color);
+            transform: translate(0, -10px);
+            border-color: var(--border-color);
+            background: #fff;
+
+            .search__bar__icon {
+                color: var(--border-color);
+            }
+        }
+    }
+}

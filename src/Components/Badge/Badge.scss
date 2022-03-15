@@ -1,0 +1,16 @@
+.badge {
+    background-color: #ffe380;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--border-radius);
+    text-transform: capitalize;
+    font-size: small;
+
+    &.clickable {
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--secondary-color);
+            color: #fff;
+        }
+    }
+}
