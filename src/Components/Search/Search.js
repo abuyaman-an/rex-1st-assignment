@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { API_BASE_URL, API_KEY, truncateString } from "../../Commons/Functions/Commons";
 import RecipesList from "../RecipesList/RecipesList";
-import LoadingIndicator from "../LoadingIndicator/LoadingIndicator";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import SearchBar from "../SearchBar/SearchBar";
