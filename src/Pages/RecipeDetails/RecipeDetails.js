@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import { API_BASE_URL, API_KEY, truncateString } from "../../Commons/Functions/Commons";
-import { useParams } from 'react-router-dom';
+import IngredientsList from "../../Components/IngredientsList/IngredientsList";
 import LoadingScreen from "../../Components/LoadingScreen/LoadingScreen";
+import RecipesList from "../../Components/RecipesList/RecipesList";
+import Badge from "../../Components/Badge/Badge";
+import { useParams } from 'react-router-dom';
+import { MetaTags } from "react-meta-tags";
 import Parser from 'html-react-parser';
 import axios from "axios";
-import RecipesList from "../../Components/RecipesList/RecipesList";
-import { MetaTags } from "react-meta-tags";
 import "./RecipeDetails.scss";
-import SingleIngredientItem from "../../Components/SingleIngredientItem/SingleIngredientItem";
-import Badge from "../../Components/Badge/Badge";
-import IngredientsList from "../../Components/IngredientsList/IngredientsList";
+
 
 const RecipeDetails = () => {
     /**
