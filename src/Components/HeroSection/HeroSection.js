@@ -2,6 +2,7 @@ import React from "react";
 import PeepOne from '../../Assets/Images/peep-setting.svg';
 import { Link } from "react-router-dom";
 import "./HeroSection.scss";
+import Button from "../Button/Button";
 
 const HeroSection = ({ title, description, callToActionLabel, callToActionLink }) => {
     /**
@@ -18,9 +19,11 @@ const HeroSection = ({ title, description, callToActionLabel, callToActionLink }
                 <div className="hero-section__inner__text">
                     <h1>{title}</h1>
                     <p className="big">{description}</p>
-                    <Link to={callToActionLink}>
-                        <button className='btn' style={{ alignSelf: 'flex-start' }}>{callToActionLabel}</button>
-                    </Link>
+                    <Button
+                        to={callToActionLink}
+                        label={callToActionLabel}
+                        style={{ alignSelf: "flex-start" }}
+                    />
                 </div>
             </div>
         </header>

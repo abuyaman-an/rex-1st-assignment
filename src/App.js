@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import Navbar from './Components/Navbar/Navbar';
 import { Routes, Route } from "react-router-dom";
-import Homepage from './Pages/Homepage/Homepage';
-import RecipeDetails from './Pages/RecipeDetails/RecipeDetails';
-import About from './Pages/About/About';
-import './Assets/SCSS/line-awesome/css/line-awesome.min.css';
-import './Assets/SCSS/main.scss';
+import LoadingScreen from './Components/LoadingScreen/LoadingScreen';
+import './ThemeStyles/General.scss';
+
+// Lazy loading pages components
+const Homepage = lazy(() => import("./Pages/Homepage/Homepage"));
+const RecipeDetails = lazy(() => import("./Pages/RecipeDetails/RecipeDetails"));
+const About = lazy(() => import("./Pages/About/About"));
 
 function App() {
 
@@ -35,11 +37,13 @@ function App() {
     <div className="main-container">
       <Navbar links={links} />
       <main className="main-content">
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="about" element={<About />} />
-          <Route path="recipe/:id/" element={<RecipeDetails />} />
-        </Routes>
+        <Suspense fallback={<LoadingScreen fullscreen />}>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="about" element={<About />} />
+            <Route path="recipe/:id/" element={<RecipeDetails />} />
+          </Routes>
+        </Suspense>
       </main>
     </div>
   );

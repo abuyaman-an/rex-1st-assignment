@@ -10,7 +10,6 @@ import Parser from 'html-react-parser';
 import axios from "axios";
 import "./RecipeDetails.scss";
 
-
 const RecipeDetails = () => {
     /**
      * A screen that shows one recipe in details

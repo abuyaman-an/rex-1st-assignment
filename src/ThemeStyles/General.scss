@@ -1,45 +1,6 @@
-@import 'reset';
-@import '~include-media/dist/include-media';
-
-:root {
-    // General colors
-    --main-color: #F2B5BD;
-    --main-color-d1: #aa8086;
-    --secondary-color: #1a759f;
-    --loading-element-color: #eee;
-    --shadow-color: rgba(26, 117, 159, 0.15);
-    --background-color: #fff7f9;
-    --inactive-color: #D8D7D1;
-    --body-text-color: #865c6c;
-    --heading-text-color: #20314F;
-
-    // Border related
-    --border-color: #20314F;
-    --border-width: 2px;
-    --border-radius: 3px;
-
-    // Status
-    --success-color: #358f80;
-    --success-light-color: #88d4ab;
-
-    // Spacing
-    --space-2xs: 2px;
-    --space-xs: 5px;
-    --space-sm: 10px;
-    --space-md: 15px;
-    --space-lg: 20px;
-
-    // Padding
-    --padding-xs: 5px;
-    --padding-sm: 10px;
-    --padding-md: 15px;
-    --padding-lg: 20px;
-
-    // Links
-    --content-link-color: #184e77;
-    --content-link-color-hover: #003335;
-    --content-link-color-visited: #1b4332;
-}
+@import 'Reset';
+@import './main';
+@import './Icons/line-awesome/css/line-awesome.min';
 
 * {
     box-sizing: border-box;
@@ -113,11 +74,10 @@ img {
 
 body {
     background-color: var(--background-color);
-    background-image: url('../Patterns/memphis-mini.png');
+    background-image: url('../Assets/Patterns/memphis-mini.png');
     font-family: 'Source Serif 4', sans-serif;
     color: var(--body-text-color);
     background-attachment: fixed;
-
 }
 
 body {
