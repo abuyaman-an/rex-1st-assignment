@@ -7,13 +7,16 @@ import SearchBar from "../SearchBar/SearchBar";
 import "./Search.scss";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import Badge from "../Badge/Badge";
+import { updateSearchTerm } from "../../Store/Recipes/Actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const Search = () => {
-    const [results, setResults] = useState([]);
+    const searchResults = useSelector(state => state.recipes.searchResults);
+
     const [suggestions, setSuggestions] = useState([]);
-    const [loading, isLoading] = useState(false);
     const [term, setTerm] = useState("");
     const [searchParams, setSearchParams] = useSearchParams();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const searchParam = searchParams.get("search");
@@ -22,16 +25,11 @@ const Search = () => {
     }, [])
 
     useEffect(() => {
-        // Show the loading indicator before sending the request..
-        isLoading(true);
-
         // Exceutes the request only after 1 second from typing the last character
         const delayDebounceFn = setTimeout(() => {
             if (term.trim()) {
-                // Fetch suggestions and recipes
-                fetchSuggestions(term);
-                searchRecipes(term);
-
+                dispatch(updateSearchTerm({ term }));
+                // fetchSuggestions(term);
                 // Update the URL search parameters
                 setSearchParams({ search: term });
             }
@@ -52,32 +50,12 @@ const Search = () => {
         }
     }
 
-    const searchRecipes = async (searchTerm = "") => {
-        if (searchTerm.trim()) {
-            try {
-                let result = await axios.get(`${API_BASE_URL}/recipes/complexSearch?query=${searchTerm}&apiKey=${API_KEY}&number=12`);
-                let data = await result.data;
-                if (result.status === 200)
-                    setResults(data.results);
-            }
-            catch (error) {
-                console.log(`**ERROR(searchRecipes): ${error}`);
-            }
-            // Hide the loading indicator
-            isLoading(false);
-        }
-        else {
-            // Indicate that the user empyted the search box and stopped using the search..
-            setResults([]);
-        }
-    }
-
     return (
         <div className="search">
-            <SearchBar value={term} busy={loading} onChange={(text) => setTerm(text)} />
+            <SearchBar value={term} busy={searchResults.loading} onChange={(text) => setTerm(text)} />
             {
                 // Show the suggestions if any exists.
-                term.trim() && results.length > 0 &&
+                term.trim() && searchResults.recipes.length > 0 &&
                 <div className="search__suggestions">
                     {suggestions.map((suggestion, index) => <Badge key={index.toString()} onClick={() => setTerm(suggestion)} message={truncateString(suggestion, 30)} />)}
                 </div>
@@ -87,11 +65,11 @@ const Search = () => {
                 // if so show search results, else show no results found message.
                 // Otherwise it means it's still loading, show the loading indicator
                 term.trim() ?
-                    !loading ? (
+                    !searchResults.loading ? (
                         <div className="search__results">
                             <RecipesList
-                                name={`${results.length} search results for "${term}"`}
-                                recipes={results}
+                                name={`${searchResults.recipes.length} search results for "${term}"`}
+                                recipes={searchResults.recipes}
                                 noResultsMessage={`We found no results while searching for "${term}",\n we know you're mad but, we're sorry.`}
                             />
                         </div>

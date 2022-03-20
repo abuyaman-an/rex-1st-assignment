@@ -1,10 +1,14 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { getHealthyRecipes, getRandomRecipes } from "./Actions"
+import { getHealthyRecipes, getRandomRecipes, getSearchResults, updateSearchTerm } from "./Actions"
 
 // Store initial state
 const initialState = {
     recipes: {
-        searchResults: {},
+        searchResults: {
+            recipes: [],
+            loading: false,
+            error: null
+        },
         randomRecipes: {
             recipes: [],
             loading: false,
@@ -48,7 +52,21 @@ export const recipesReducer = createReducer(initialState, {
     [getHealthyRecipes.failed.type]: (state, action) => {
         state.recipes.healthyRecipes.loading = false;
         state.recipes.healthyRecipes.error = action.payload.error;
-    }
+    },
+
+    // Search recipes cases:
+    [updateSearchTerm.type]: (state, action) => {
+        state.ui.searchTerm = action.payload.term;
+        state.recipes.searchResults.loading = true;
+    },
+    [getSearchResults.succeeded.type]: (state, action) => {
+        state.recipes.searchResults.loading = false;
+        state.recipes.searchResults.recipes = action.payload.recipes;
+    },
+    [getSearchResults.failed.type]: (state, action) => {
+        state.recipes.searchResults.loading = false;
+        state.recipes.searchResults.error = action.payload.error;
+    },
 });
 
 export default recipesReducer;
