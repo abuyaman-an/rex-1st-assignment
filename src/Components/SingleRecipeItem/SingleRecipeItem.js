@@ -1,3 +1,4 @@
+import { Tooltip } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { stripHTML, truncateString } from '../../Commons/Functions/Commons';
@@ -19,11 +20,11 @@ const SingleRecipeItem = ({ image, title, description, link, dishTypes, veryHeal
     // If loading it shows an empty card that have some loading animations.
     if (loading)
         return (
-            <div className="single-recipe-container loading">
+            <div className="single-recipe-container loading" aria-busy="true">
                 <div className="single-recipe">
                     <div className='single-recipe__img-container'></div>
                     <div className="single-recipe__info">
-                        <h2 className="single-recipe__title"></h2>
+                        <h2 className="single-recipe__title" aria-hidden="true"></h2>
                         <p className="single-recipe__desc"></p>
                         <div className="single-recipe__dish-types">
                             <span className='single-recipe__dish-type'></span>
@@ -40,9 +41,14 @@ const SingleRecipeItem = ({ image, title, description, link, dishTypes, veryHeal
                 {
                     // If veryHealthy is true shows a health badge on the recipe.
                     veryHealthy &&
-                    <>
+                    <Tooltip title="Healthy recipe" sx={{
+                        marginTop: 0,
+                        backgroundColor: '#fff',
+                        color: 'var(--main-color)',
+                        border: '1px solid black', borderRadius: 0
+                    }}>
                         <i className="single-recipe__health-score las la-apple-alt" aria-label="Healthy recipe badge"></i>
-                    </>
+                    </Tooltip>
                 }
                 {
                     image &&

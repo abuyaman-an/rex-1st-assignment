@@ -1,0 +1,22 @@
+@import "./general";
+
+//Here we transfer the variables from the map to the :root element
+@if($css4) {
+    :root {
+
+        @each $variable,
+        $value in $variables {
+            #{$variable}: $value;
+        }
+    }
+}
+
+@function var($variable) {
+    @if($css4) {
+        @return unquote('var('+ $variable + ')');
+    }
+
+    @else {
+        @return map-get($variables, $variable);
+    }
+}

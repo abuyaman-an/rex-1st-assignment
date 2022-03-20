@@ -9,7 +9,8 @@ import { MetaTags } from "react-meta-tags";
 import Parser from 'html-react-parser';
 import axios from "axios";
 import "./RecipeDetails.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getRandomRecipes } from "../../Store/Recipes/Actions";
 
 const RecipeDetails = () => {
     /**
@@ -20,8 +21,19 @@ const RecipeDetails = () => {
     const [recipeData, setRecipeData] = useState({});
     const [similarRecipes, setSimilarRecipes] = useState([]);
     const [loading, isLoading] = useState(true);
+    const dispatch = useDispatch();
 
     const randomRecipes = useSelector((state) => state.recipes.randomRecipes);
+
+    useEffect(() => {
+        // Fetch recipe details on mount
+        fetchRecipeDetails();
+        fetchSimilarRecipe();
+
+        // If there are no random recipes, dispatch a get request.
+        if (randomRecipes.recipes.length === 0)
+            dispatch(getRandomRecipes.started());
+    }, [id])
 
     const fetchRecipeDetails = async () => {
         // Fetch(get) recipe details based on the recipe ID.
@@ -50,12 +62,6 @@ const RecipeDetails = () => {
             console.error(`**ERR:fetchSimilarRecipe ${error}`);
         }
     }
-
-    useEffect(() => {
-        // Fetch recipe details on mount
-        fetchRecipeDetails();
-        fetchSimilarRecipe();
-    }, [])
 
     // If still loading the request, show a loading indicator.
     if (loading)
@@ -140,4 +146,5 @@ const RecipeDetails = () => {
         </>
     )
 }
+
 export default RecipeDetails;

@@ -39,7 +39,7 @@ function App() {
       <main className="main-content">
         <Suspense fallback={<LoadingScreen fullscreen />}>
           <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route exact path="/" element={<Homepage />} />
             <Route path="about" element={<About />} />
             <Route path="recipe/:id/" element={<RecipeDetails />} />
           </Routes>

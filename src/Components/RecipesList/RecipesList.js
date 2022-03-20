@@ -17,6 +17,7 @@ const RecipesList = ({ name, recipes, numToExpect, loading, actionComponent, act
      * @param {object} [error] - (optional) An error object that includes an request error message and indicates that an error accord.
      * @param {function} [errorRetry] - (optional) A callback function that gets called when click the error message try again message.
      */
+
     const actionComponentCallback = () => {
         actionOnClick();
     }
@@ -26,7 +27,7 @@ const RecipesList = ({ name, recipes, numToExpect, loading, actionComponent, act
             <div className="recipes-list__title-container">
                 <h3 className="recipes-list__title">{name}</h3>
                 {
-                    actionComponent &&
+                    (actionComponent && actionOnClick) &&
                     <button onClick={actionComponentCallback} className="recipes-list__title-arrow no-btn">{actionComponent}</button>
                 }
             </div>

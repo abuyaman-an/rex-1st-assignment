@@ -146,6 +146,15 @@ body {
     }
 }
 
+.css-ja5taz-MuiTooltip-tooltip {
+    background: #fff !important;
+    color: var(--secondary-color) !important;
+    border: 2px solid var(--secondary-color);
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: var(--space-sm) var(--space-md);
+}
+
 @keyframes shine {
     to {
         background-position-x: -200%;
