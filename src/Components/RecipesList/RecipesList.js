@@ -1,9 +1,10 @@
 import React from "react";
 import NoResults from "../NoResults/NoResults";
+import ResultsError from "../ResultsError/ResultsError";
 import SingleRecipeItem from "../SingleRecipeItem/SingleRecipeItem";
 import "./RecipesList.scss";
 
-const RecipesList = ({ name, recipes, numToExpect, loading, actionComponent, actionOnClick, noResultsTitle, noResultsMessage }) => {
+const RecipesList = ({ name, recipes, numToExpect, loading, actionComponent, actionOnClick, noResultsTitle, noResultsMessage, error, errorRetry }) => {
     /**
      * A recipes list component that shows a list of recipes together.
      * @param {string} name - List name, more of a section title to show 
@@ -13,6 +14,8 @@ const RecipesList = ({ name, recipes, numToExpect, loading, actionComponent, act
      * @param {function} actionOnClick - A callback function that gets called when the `actionComponent` is clicked.
      * @param {string} [noResultsTitle] - (optional) A title for the `no-results` component.
      * @param {string} [noResultsMessage] - (optional) A message for the `no-results` component.
+     * @param {object} [error] - (optional) An error object that includes an request error message and indicates that an error accord.
+     * @param {function} [errorRetry] - (optional) A callback function that gets called when click the error message try again message.
      */
     const actionComponentCallback = () => {
         actionOnClick();
@@ -36,7 +39,7 @@ const RecipesList = ({ name, recipes, numToExpect, loading, actionComponent, act
                         }
                     </div>
                     :
-                    (
+                    !error ? (
                         recipes.length ?
                             <div className="recipes-list__list">
                                 {
@@ -49,7 +52,7 @@ const RecipesList = ({ name, recipes, numToExpect, loading, actionComponent, act
                                             description={recipe.summary}
                                             dishTypes={recipe.dishTypes}
                                             veryHealthy={recipe.veryHealthy}
-                                            link={`recipe/${recipe.id}/`}
+                                            link={`/recipe/${recipe.id}/`}
                                         />
                                     ))
                                 }
@@ -59,7 +62,11 @@ const RecipesList = ({ name, recipes, numToExpect, loading, actionComponent, act
                                 title={noResultsTitle ?? "No results"}
                                 message={noResultsMessage ?? `We found no results for "${name}",\n we know you're mad but, we're sorry.`}
                             />
-                    )
+                    ) :
+                        <ResultsError
+                            errorObj={error}
+                            retryCallback={errorRetry}
+                        />
             }
         </section>
     )

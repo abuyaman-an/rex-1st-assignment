@@ -9,6 +9,7 @@ import { MetaTags } from "react-meta-tags";
 import Parser from 'html-react-parser';
 import axios from "axios";
 import "./RecipeDetails.scss";
+import { useSelector } from "react-redux";
 
 const RecipeDetails = () => {
     /**
@@ -19,6 +20,8 @@ const RecipeDetails = () => {
     const [recipeData, setRecipeData] = useState({});
     const [similarRecipes, setSimilarRecipes] = useState([]);
     const [loading, isLoading] = useState(true);
+
+    const randomRecipes = useSelector((state) => state.recipes.randomRecipes);
 
     const fetchRecipeDetails = async () => {
         // Fetch(get) recipe details based on the recipe ID.
@@ -121,6 +124,18 @@ const RecipeDetails = () => {
                         recipes={similarRecipes}
                     />
                 </div>
+
+                <div className="recipe-details__similar">
+                    <RecipesList
+                        numToExpect={4}
+                        name="Explore some random recipes"
+                        recipes={randomRecipes.recipes}
+                        actionComponent={<i className="las la-redo-alt"></i>}
+                        loading={randomRecipes.loading}
+                        error={randomRecipes.error}
+                    />
+                </div>
+
             </div>
         </>
     )

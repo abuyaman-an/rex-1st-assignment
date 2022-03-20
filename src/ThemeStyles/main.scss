@@ -13,6 +13,7 @@ $variables: ( // General colors
     --body-text-color: #865c6c,
     --heading-text-color: #20314F,
 
+
     // Border related
     --border-color: #20314F,
     --border-width: 2px,
@@ -21,6 +22,11 @@ $variables: ( // General colors
     // Status
     --success-color: #358f80,
     --success-light-color: #88d4ab,
+    --danger-color:#dd2d4a,
+    --danger-light-color:#ff477e,
+    --danger-dark-color:#641220,
+    --danger-shadow-color: rgba(255, 71, 126, 0.15),
+
 
     // Spacing
     --space-2xs: 2px,
@@ -43,6 +49,7 @@ $variables: ( // General colors
 //Here we transfer the variables from the map to the :root element
 @if($css4) {
     :root {
+
         @each $variable,
         $value in $variables {
             #{$variable}: $value;
@@ -54,6 +61,7 @@ $variables: ( // General colors
     @if($css4) {
         @return unquote('var('+ $variable + ')');
     }
+
     @else {
         @return map-get($variables, $variable);
     }

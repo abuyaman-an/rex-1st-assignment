@@ -1,53 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import RecipesList from "../../Components/RecipesList/RecipesList";
-import { API_BASE_URL, API_KEY } from "../../Commons/Functions/Commons";
 import Search from "../../Components/Search/Search";
-import axios from "axios";
 import { MetaTags } from "react-meta-tags";
 import HeroSection from "../../Components/HeroSection/HeroSection";
+import { useDispatch, useSelector } from "react-redux";
+import { getRandomRecipes, getHealthyRecipes } from "../../Store/Recipes/Actions";
 
 const Homepage = () => {
     /**
      * The homepage screen, shows two lists of recipes in addition to a search functionality.
      */
-    const [randomRecipes, setRandomRecipes] = useState();
-    const [healthRecipes, setHealthRecipes] = useState();
+    const dispatch = useDispatch();
+
+    const randomRecipes = useSelector((state) => state.recipes.randomRecipes);
+    const healthyRecipes = useSelector((state) => state.recipes.healthyRecipes);
 
     const HomepageDescription = "A website for finding your next recipe";
 
-    const fetchRandomRecipes = async (limit = 4) => {
-        // Fetches some random recipes to show in the random recipes section. 
-        try {
-            let result = await axios.get(`${API_BASE_URL}/recipes/random?number=${limit}&apiKey=${API_KEY}`);
-            let { data } = result;
-            if (result.status === 200)
-                setRandomRecipes(data.recipes);
-        }
-        catch (error) {
-            console.error(`**ERR:fetchRandomRecipes ${error}`);
-        }
+    const initRandomRecipes = async (limit = 4, forceFetch = false) => {
+        if (forceFetch || randomRecipes.recipes.length === 0)
+            // Fetches some random recipes to show in the random recipes section. 
+            dispatch(getRandomRecipes.started());
     }
 
-    const fetchHealthRecipes = async (limit = 4) => {
-        // Fetches some healthy recipes to show in the healthy recipes section. 
-        try {
-            let result = await axios.get(`${API_BASE_URL}/recipes/complexSearch?veryHealthy=true&number=${limit}&apiKey=${API_KEY}`);
-            let { data } = result;
-            if (result.status === 200)
-                setHealthRecipes(data.results.map(recipe => {
-                    recipe.veryHealthy = true;
-                    return recipe;
-                }));
-        }
-        catch (error) {
-            console.error(`**ERR:fetchHealthRecipes ${error}`);
-        }
+    const initHealthyRecipes = async (limit = 4, forceFetch = false) => {
+        if (forceFetch || healthyRecipes.recipes.length === 0)
+            // Fetches some healthy recipes to show in the healthy recipes section. 
+            dispatch(getHealthyRecipes.started())
     }
 
     useEffect(() => {
-        // Get sections recipes on mount
-        fetchRandomRecipes(4);
-        fetchHealthRecipes(4);
+        // Dispatch fetch sections recipes on mount
+        initRandomRecipes();
+        initHealthyRecipes(4);
     }, [])
 
     return (
@@ -68,16 +53,18 @@ const Homepage = () => {
                     <RecipesList
                         numToExpect={4}
                         name="Random recipes"
-                        recipes={randomRecipes}
+                        recipes={randomRecipes.recipes}
                         actionComponent={<i className="las la-redo-alt"></i>}
-                        actionOnClick={fetchRandomRecipes}
-                        loading={typeof randomRecipes != "object"}
+                        actionOnClick={initRandomRecipes}
+                        loading={randomRecipes.loading}
+                        error={randomRecipes.error}
                     />
                     <RecipesList
                         numToExpect={4}
                         name="Healthy recipes"
-                        recipes={healthRecipes}
-                        loading={typeof healthRecipes != "object"}
+                        recipes={healthyRecipes.recipes}
+                        loading={healthyRecipes.loading}
+                        error={healthyRecipes.error}
                     />
                 </div>
             </div>
