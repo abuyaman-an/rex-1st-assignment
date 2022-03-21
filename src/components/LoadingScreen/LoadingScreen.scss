@@ -1,0 +1,25 @@
+@import "../../themeStyles/main";
+
+.loading-screen {
+    &.full-screen {
+        height: calc(100vh - 100px);
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    animation: floating 2s infinite;
+
+    &__message {
+        &::after {
+            content: "";
+            display: inline-block;
+            animation: ellipsis 1.5s infinite;
+            width: 1em;
+            text-align: left;
+            margin-left: var(--space-2xs);
+        }
+    }
+}

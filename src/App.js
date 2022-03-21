@@ -1,13 +1,14 @@
 import React, { Suspense, lazy } from 'react';
-import Navbar from './Components/Navbar/Navbar';
 import { Routes, Route } from "react-router-dom";
-import LoadingScreen from './Components/LoadingScreen/LoadingScreen';
-import './ThemeStyles/General.scss';
+
+import LoadingScreen from './components/LoadingScreen/LoadingScreen';
+import Navbar from './components/Navbar/Navbar';
+import './themeStyles/general.scss';
 
 // Lazy loading pages components
-const Homepage = lazy(() => import("./Pages/Homepage/Homepage"));
-const RecipeDetails = lazy(() => import("./Pages/RecipeDetails/RecipeDetails"));
-const About = lazy(() => import("./Pages/About/About"));
+const Homepage = lazy(() => import( /* webpackChunkName: "pages.homepage" */ "./pages/Homepage/Homepage"));
+const RecipeDetails = lazy(() => import( /* webpackChunkName: "pages.recipe-details" */ "./pages/RecipeDetails/RecipeDetails"));
+const About = lazy(() => import( /* webpackChunkName: "pages.about" */ "./pages/About/About"));
 
 function App() {
 

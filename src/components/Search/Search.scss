@@ -1,0 +1,30 @@
+@import "../../themeStyles/main";
+
+.search {
+    &__loading {
+        min-height: 100px;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__message {
+            margin-top: var(--space-md);
+        }
+    }
+
+    &__suggestions {
+        display: flex;
+        gap: var(--space-sm);
+        flex-wrap: wrap;
+        margin-bottom: var(--space-lg);
+    }
+
+    &__suggestion {
+        background: #ffe380;
+        cursor: pointer;
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 6px;
+    }
+}

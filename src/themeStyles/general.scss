@@ -1,0 +1,188 @@
+@import 'reset';
+@import './main';
+@import './icons/line-awesome/css/line-awesome.min';
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: var(--content-link-color);
+    text-decoration: none;
+
+    &:visited {
+        color: var(--content-link-color-visited);
+    }
+
+    &:hover {
+        color: var(--content-link-color-hover);
+    }
+}
+
+h1 {
+    font-size: 3rem;
+    color: var(--heading-text-color);
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 1rem;
+    color: rgb(58, 58, 58);
+
+    &.big {
+        font-size: 1.25rem;
+    }
+}
+
+img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.no-btn {
+    padding: 0;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+}
+
+.padding-wrapper {
+    padding-top: var(--padding-lg);
+    padding-bottom: var(--padding-lg);
+
+    @include media("<desktop") {
+        padding-right: var(--padding-lg);
+        padding-left: var(--padding-lg);
+    }
+}
+
+.gap-lg {
+    display: grid;
+    gap: var(--space-lg);
+}
+
+body {
+    background-color: var(--background-color);
+    background-image: url('../assets/Patterns/memphis-mini.png');
+    font-family: 'Source Serif 4', sans-serif;
+    color: var(--body-text-color);
+    background-attachment: fixed;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.main-content {
+    @include media(">desktop") {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1024px) minmax(0, 1fr);
+        gap: var(--padding-lg);
+        grid-template-areas: "sidebar-1 main sidebar-2";
+        padding: 0 1rem;
+    }
+
+    .main {
+        grid-area: main;
+    }
+
+    .sidebar-1 {
+        grid-area: sidebar-1;
+    }
+
+    .sidebar-2 {
+        grid-area: sidebar-2;
+    }
+
+    .sidebar-1,
+    .sidebar-2 {
+        display: none;
+
+        @include media(">=desktop") {
+            display: block;
+        }
+
+        h3 {
+            margin-bottom: var(--space-sm);
+        }
+
+        &__inner {
+            position: sticky;
+            top: calc(60px + var(--padding-lg));
+            display: flex;
+            gap: var(--space-lg);
+            align-items: flex-end;
+            flex-direction: column;
+        }
+
+        section {
+            background-color: var(--white);
+            padding: var(--padding-lg);
+            border: var(--border-width) solid var(--border-color);
+            max-width: 350px;
+            width: 100%;
+        }
+    }
+
+    &__grid {
+        display: grid;
+        gap: var(--space-lg);
+        padding: var(--padding-lg);
+
+        @include media(">=desktop") {
+            padding: var(--padding-lg) 0;
+        }
+    }
+}
+
+.css-ja5taz-MuiTooltip-tooltip {
+    background: var(--white) !important;
+    color: var(--secondary-color) !important;
+    border: 2px solid var(--secondary-color);
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: var(--space-sm) var(--space-md);
+}
+
+@keyframes shine {
+    to {
+        background-position-x: -200%;
+    }
+}
+
+@keyframes ellipsis {
+    0% {
+        content: ".";
+    }
+
+    33% {
+        content: "..";
+    }
+
+    66% {
+        content: "...";
+    }
+}
+
+@keyframes floating {
+    0% {
+        transform: translatey(0px);
+    }
+
+    50% {
+        transform: translatey(-10px);
+    }
+
+    100% {
+        transform: translatey(0px);
+    }
+}
