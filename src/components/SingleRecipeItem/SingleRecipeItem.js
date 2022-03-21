@@ -1,4 +1,3 @@
-import { Tooltip } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { stripHTML, truncateString } from '../../commons/functions/commons';
@@ -41,9 +40,7 @@ const SingleRecipeItem = ({ image, title, description, link, dishTypes, veryHeal
                 {
                     // If veryHealthy is true shows a health badge on the recipe.
                     veryHealthy &&
-                    <Tooltip title="Healthy recipe">
-                        <i className="single-recipe__health-score las la-apple-alt" aria-label="Healthy recipe badge"></i>
-                    </Tooltip>
+                    <i className="single-recipe__health-score las la-apple-alt" aria-label="Healthy recipe badge"></i>
                 }
                 {
                     image &&

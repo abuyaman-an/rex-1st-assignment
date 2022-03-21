@@ -55,6 +55,7 @@ const Homepage = ({ healthyRecipes, randomRecipes, initHealthyRecipes, initRando
                         numToExpect={4}
                         name="Random recipes"
                         recipes={randomRecipes.recipes}
+                        actionLabel="Reload random recipes"
                         actionComponent={<i className="las la-redo-alt"></i>}
                         actionOnClick={initRandomRecipes}
                         loading={randomRecipes.loading}

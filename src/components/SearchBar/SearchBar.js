@@ -10,6 +10,7 @@ const SearchBar = ({ value, onChange, onKeyPress, onSearchClick, busy }) => {
      * @param {string} value - The value of the search input.
      * @param {function} onChange - Callback function that gets called on search input onChange.
      * @param {boolean} busy - Indicates if the input is busy searching for content. For (aria-busy) attribute.
+     * @param {function} onSearchClick - Search button callback function.
      */
 
     const _onChange = (e) => {
@@ -25,7 +26,7 @@ const SearchBar = ({ value, onChange, onKeyPress, onSearchClick, busy }) => {
         <div className={`search-bar__wrapper ${value.trim() ? "active" : ""}`} role="search">
             <div className="search-bar">
                 <i className="search-bar__icon las la-search"></i>
-                <label className="search-bar__label" id="search-recipes-label">Search recipes</label>
+                <label className="search-bar__label sr-only" id="search-recipes-label">Search recipes</label>
                 <input
                     type="search"
                     value={value}
@@ -39,6 +40,7 @@ const SearchBar = ({ value, onChange, onKeyPress, onSearchClick, busy }) => {
             </div>
             <Button
                 noShadow
+                ariaLabel="Search"
                 onClick={onSearchClick}
                 primary={value.trim().length > 0}
                 label={<i className="las la-search"></i>}

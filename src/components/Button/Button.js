@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Button.scss";
 
-const Button = ({ label, to, onClick, className, style, primary, noShadow }) => {
+const Button = ({ label, to, onClick, className, style, primary, noShadow, ariaLabel }) => {
     if (to)
         return (
             <Link style={style} className={`btn ${className ?? ""} ${primary ? "btn--primary" : ""} ${noShadow ? "" : "btn--shadow"}`} to={to}>
@@ -11,6 +11,7 @@ const Button = ({ label, to, onClick, className, style, primary, noShadow }) => 
         )
     return (
         <button
+            aria-label={ariaLabel}
             onClick={onClick}
             className={`btn ${className ?? ""} ${primary ? "btn--primary" : ""} ${noShadow ? "" : "btn--shadow"}`}>
             {label}

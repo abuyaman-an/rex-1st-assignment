@@ -1,10 +1,11 @@
 @import "../../themeStyles/main";
 
 .badge {
-    background-color: #ffe380;
+    background-color: var(--badge-bg);
     padding: var(--space-xs) var(--space-sm);
     border-radius: var(--border-radius);
     text-transform: capitalize;
+    color: var(--badge-color);
     font-size: small;
 
     &.clickable {

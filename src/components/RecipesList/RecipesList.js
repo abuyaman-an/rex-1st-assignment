@@ -1,10 +1,11 @@
 import React from "react";
+
 import NoResults from "../NoResults/NoResults";
 import ResultsError from "../ResultsError/ResultsError";
 import SingleRecipeItem from "../SingleRecipeItem/SingleRecipeItem";
 import "./RecipesList.scss";
 
-const RecipesList = ({ name, recipes, numToExpect, loading, actionComponent, actionOnClick, noResultsTitle, noResultsMessage, error, errorRetry }) => {
+const RecipesList = ({ name, recipes, numToExpect, loading, actionComponent, actionOnClick, noResultsTitle, noResultsMessage, error, errorRetry, actionLabel }) => {
     /**
      * A recipes list component that shows a list of recipes together.
      * @param {string} name - List name, more of a section title to show 
@@ -25,10 +26,10 @@ const RecipesList = ({ name, recipes, numToExpect, loading, actionComponent, act
     return (
         <section className="recipes-list">
             <div className="recipes-list__title-container">
-                <h3 className="recipes-list__title">{name}</h3>
+                <h2 className="recipes-list__title">{name}</h2>
                 {
                     (actionComponent && actionOnClick) &&
-                    <button onClick={actionComponentCallback} className="recipes-list__title-arrow no-btn">{actionComponent}</button>
+                    <button onClick={actionComponentCallback} aria-label={actionLabel} className="recipes-list__title-arrow no-btn">{actionComponent}</button>
                 }
             </div>
             {
