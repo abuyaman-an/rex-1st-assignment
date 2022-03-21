@@ -14,8 +14,9 @@ const Search = () => {
     const searchResults = useSelector(state => state.recipes.searchResults);
 
     const [suggestions, setSuggestions] = useState([]);
-    const [term, setTerm] = useState("");
     const [searchParams, setSearchParams] = useSearchParams();
+    const [term, setTerm] = useState("");
+
     const dispatch = useDispatch();
 
     useEffect(() => {

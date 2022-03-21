@@ -3,7 +3,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { API_BASE_URL, API_KEY } from '../../../Commons/Functions/Commons';
 import { getHealthyRecipes } from '../Actions';
 
-const fetchHealthyRecipesAPI = async (limit = 4) => {
+const apiCall = async (limit = 4) => {
     let result = await axios.get(`${API_BASE_URL}/recipes/complexSearch?veryHealthy=true&number=${limit}&apiKey=${API_KEY}`);
     let { data } = result;
     if (result.status === 200)
@@ -13,7 +13,7 @@ const fetchHealthyRecipesAPI = async (limit = 4) => {
 function* fetchHealthyRecipes(action) {
     console.log('fetchHealthyRecipes',action);
     try {
-        const recipes = yield call(fetchHealthyRecipesAPI);
+        const recipes = yield call(apiCall);
         console.log('something',recipes);
         yield put(getHealthyRecipes.succeeded({ recipes }))
     }
