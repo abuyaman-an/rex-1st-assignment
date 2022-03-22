@@ -2,14 +2,16 @@
 
 .btn {
     border: none;
-    background-color: var(--white);
-    border: var(--border-width) solid var(--border-color);
+    background-color: #000;
     font-family: inherit;
     cursor: pointer;
     font-size: 1rem;
     padding: var(--padding-sm) var(--padding-md);
     transition: .25s;
     line-height: 1rem;
+    border-radius: 25px;
+    font-weight: 500;
+    color: #fff !important;
 
     &.btn--primary {
         background-color: var(--secondary-color);
@@ -27,7 +29,7 @@
 
     &.btn--shadow {
         &:hover {
-            box-shadow: 7px 7px 0 var(--shadow-color);
+            box-shadow: 0 0 10px var(--shadow-color);
         }
     }
 }

@@ -23,11 +23,14 @@ const SingleRecipeItem = ({ image, title, description, link, dishTypes, veryHeal
                 <div className="single-recipe">
                     <div className='single-recipe__img-container'></div>
                     <div className="single-recipe__info">
-                        <h2 className="single-recipe__title" aria-hidden="true"></h2>
-                        <p className="single-recipe__desc"></p>
                         <div className="single-recipe__dish-types">
                             <span className='single-recipe__dish-type'></span>
                             <span className='single-recipe__dish-type'></span>
+                        </div>
+                        <h2 className="single-recipe__title" aria-hidden="true"></h2>
+                        <p className="single-recipe__desc"></p>
+                        <div to={link} className="single-recipe__arrow" aria-hidden="true" tabIndex="-1">
+                            <i class="las la-long-arrow-alt-right"></i>
                         </div>
                     </div>
                 </div>
@@ -61,6 +64,12 @@ const SingleRecipeItem = ({ image, title, description, link, dishTypes, veryHeal
                 }
 
                 <div className="single-recipe__info">
+                    {
+                        dishTypes?.length > 0 &&
+                        <div className="single-recipe__dish-types">
+                            {dishTypes?.slice(0, 2).map((dishType, index) => <Badge key={index.toString()} message={dishType} />)}
+                        </div>
+                    }
                     <Link to={link}>
                         <h2 title={title} className="single-recipe__title">{truncateString(title, 40)}</h2>
                     </Link>
@@ -68,10 +77,11 @@ const SingleRecipeItem = ({ image, title, description, link, dishTypes, veryHeal
                         description &&
                         <p className="single-recipe__desc">{truncateString(stripHTML(description))}</p>
                     }
-                    <div className="single-recipe__dish-types">
-                        {dishTypes?.slice(0, 2).map((dishType, index) => <Badge key={index.toString()} message={dishType} />)}
-                    </div>
+                    <Link to={link} className="single-recipe__arrow" aria-hidden="true" tabIndex="-1">
+                        <i class="las la-long-arrow-alt-right"></i>
+                    </Link>
                 </div>
+
             </div>
         </div>
     )

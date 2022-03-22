@@ -5,8 +5,8 @@
         width: 100%;
         display: block;
         height: 250px;
-        border: var(--border-width) solid var(--border-color);
         border-top: none;
+        border-radius: 0 0 25px 25px;
     }
 
     &__title {
@@ -18,7 +18,7 @@
         gap: var(--space-lg);
         background: var(--white);
         padding: var(--space-lg);
-        border: var(--border-width) solid var(--border-color);
+        border-radius: 20px;
         border-top: 0;
 
         a {
@@ -26,17 +26,9 @@
             text-decoration: underline wavy var(--shadow-color);
         }
 
-        &__instructions {
-            line-height: 1.35rem;
-        }
-
         section {
             h2 {
                 margin-bottom: var(--space-md);
-            }
-
-            p {
-                line-height: 1.35rem;
             }
 
             li {

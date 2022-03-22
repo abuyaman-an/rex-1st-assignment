@@ -1,29 +1,31 @@
 @import "../../themeStyles/main";
 
 .single-recipe {
-    display: block;
-    transition: .25s all;
+    display: flex;
+    flex-direction: column;
+    transition: .3s all;
     background-color: var(--white);
     position: relative;
-    border: var(--border-width) solid var(--border-color);
     height: 100%;
     z-index: 1;
+    border-radius: 6px;
 
     &__desc {
         color: var(--body-text-color);
+        font-size: .85rem;
         margin: 0;
     }
 
     &__title {
-        font-size: 1.3rem;
-        margin-bottom: 5px;
+        font-size: 1.1rem;
+        font-weight: 500;
     }
 
     &__dish-types {
         display: flex;
         flex-wrap: wrap;
-        gap: var(--padding-xs);
-        margin-top: var(--space-sm);
+        gap: var(--space-xs);
+        margin-bottom: 3px;
     }
 
     &__share {
@@ -31,25 +33,45 @@
         display: flex;
         align-items: center;
         position: absolute;
-        transition: .25s;
+        transition: .35s;
         z-index: 1;
         border: var(--border-width) solid var(--border-color);
         gap: var(--space-xs);
-        top: -2px;
-        right: -2px;
+        top: var(--space-sm);
+        right: var(--space-sm);
         padding: 10px;
+        border-radius: 20px;
+
+        @include media(">=desktop") {
+            flex-direction: column;
+            padding: 8px 0;
+            width: 30px;
+
+            // Animated values
+            left: -20px;
+            opacity: 0;
+
+            i {
+                font-size: 18px;
+            }
+        }
     }
 
-
     &__img-container {
-        overflow: hidden;
         position: relative;
+        border-radius: 6px 6px 0 50px;
+    }
+
+    &__arrow {
+        color: rgba(0, 0, 0, 0.2);
+        transition: .3s;
+        text-align: right;
+        font-size: 22px;
+        margin-top: auto;
     }
 
     &__health-score {
         font-size: 30px;
-        width: 42px;
-        height: 42px;
         color: var(--success-color);
         background: var(--success-light-color);
         position: absolute;
@@ -62,39 +84,25 @@
         transform: rotate(15deg);
 
         @include media(">=desktop") {
-            top: -10px;
-            right: -10px;
+            right: 10px;
             left: unset;
         }
     }
 
     &__img {
-        height: 200px;
-        border-bottom: var(--border-width) solid var(--border-color);
-        filter: grayscale(20%) brightness(90%) saturate(119%);
-        transition: .25s all;
+        border-radius: 6px 6px 0 0;
+        transition: .35s all;
         position: relative;
+        height: 200px;
+        opacity: 0.9;
     }
 
     &__info {
-        padding: var(--padding-md);
+        padding: var(--padding-lg) var(--padding-md) var(--padding-sm);
         display: flex;
         flex-direction: column;
+        flex: 1;
         gap: var(--space-xs);
-    }
-
-    @include media(">=desktop") {
-        &__share {
-            padding: 5px 0;
-            left: -2px;
-            top: -80px;
-            width: 30px;
-            flex-direction: column;
-
-            i {
-                font-size: 18px;
-            }
-        }
     }
 }
 
@@ -107,11 +115,13 @@
             @extend %element-loading;
             overflow: hidden;
             height: 200px;
+            border-radius: 6px 6px 0 50px;
             border-bottom: var(--border-width) solid var(--border-color);
         }
 
         .#{$single_selector}__title {
             background: var(--loading-element-color);
+            border-radius: 4px;
             width: 70%;
             height: 18px;
         }
@@ -119,7 +129,7 @@
         .#{$single_selector}__desc {
             @extend %element-loading;
             width: 100%;
-            height: 35px;
+            height: 75px;
         }
 
         .#{$single_selector}__dish-type {
@@ -128,19 +138,30 @@
             height: 14px;
             border-radius: 10px;
         }
+
+        .#{$single_selector}__arrow {
+            color: var(--loading-element-color);
+        }
     }
 
     @include media(">=desktop") {
         &:hover .single-recipe {
-            transform: translate(-15px, -15px);
-            box-shadow: 15px 15px 0 0 var(--shadow-color);
+            transform: translate(0, -10px);
+            box-shadow: 0 10px 25px 0 var(--shadow-color);
 
             .single-recipe__share {
-                top: -2px;
+                left: -5px;
+                box-shadow: 0 0 5px 0 rgba(0, 0, 0, .1);
+                opacity: 1;
             }
 
             .single-recipe__img {
-                filter: none;
+                opacity: 1;
+                border-bottom-left-radius: 65px;
+            }
+
+            .single-recipe__arrow {
+                color: var(--content-link-color);
             }
         }
     }

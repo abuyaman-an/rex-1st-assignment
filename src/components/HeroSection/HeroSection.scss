@@ -10,6 +10,11 @@
     background-color: var(--main-color);
     border-top: 0;
 
+    &__title {
+        font-weight: bold;
+        line-height: 1.1;
+    }
+
 
     &__inner {
         gap: var(--padding-lg);

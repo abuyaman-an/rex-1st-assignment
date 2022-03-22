@@ -4,12 +4,13 @@
     display: flex;
     margin-top: var(--space-lg);
     transition: .3s;
+    border-radius: 25px;
+    overflow: hidden;
 
     @include media(">=desktop") {
-
         &:focus-within,
         &.active {
-            box-shadow: 0 10px 0 var(--shadow-color);
+            box-shadow: 0 10px 10px var(--shadow-color);
             transform: translate(0, -10px);
             border-color: var(--border-color);
             background: var(--white);
@@ -35,10 +36,8 @@
     flex-flow: row wrap;
     justify-content: flex-start;
     align-items: center;
-    border: var(--border-width) solid var(--border-color);
     transition: .3s;
-    background-color: var(--background-color);
-    border-right: 0;
+    background-color: var(--white);
 
     &__input {
         flex: 1;
