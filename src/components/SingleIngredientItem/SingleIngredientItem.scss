@@ -2,17 +2,16 @@
 
 .single-ingredient-item {
     display: flex;
-    border: var(--border-width) solid var(--border-color);
-    height: 75px;
     box-sizing: content-box;
-    background: url('../../assets/Patterns/memphis-mini.png');
+    border: 1px solid var(--shadow-color);
+    border-radius: 6px;
+    overflow: hidden;
 
     &__info-wrapper {
         display: flex;
         flex-direction: column;
         justify-content: center;
         padding: 0 var(--space-md);
-        background: var(--shadow-color);
         flex: 1;
     }
 
@@ -29,10 +28,9 @@
     &__img {
         width: 75px;
         height: 75px;
-        border-right: var(--border-width) solid var(--border-color);
-
         object-fit: contain;
         background-color: var(--white);
         padding: 10px;
+        border-right: 1px solid var(--shadow-color);
     }
 }

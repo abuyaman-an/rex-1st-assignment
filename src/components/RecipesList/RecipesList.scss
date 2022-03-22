@@ -20,7 +20,7 @@
 
     &__list {
         display: grid;
-        gap: var(--space-sm);
+        gap: var(--space-md);
     }
 
     @include media(">=tablet", "<desktop") {

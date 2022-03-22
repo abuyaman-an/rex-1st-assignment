@@ -10,7 +10,6 @@
         display: inline-block;
         margin: 0 3px;
         border-radius: 50%;
-        border: var(--border-width) solid var(--border-color);
         animation: spinner $animation-duration ease-in-out infinite;
 
         @for $i from 1 through 3 {

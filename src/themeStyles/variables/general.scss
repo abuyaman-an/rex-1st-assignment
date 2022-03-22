@@ -1,19 +1,30 @@
 $css4: false;
 
 $variables: ( // General colors
-    --main-color: #F2B5BD,
+    --main-color: #ba839b,
     --main-color-d1: #aa8086,
     --secondary-color: #1a759f,
     --secondary-color-d1: #0c3e55,
     --loading-element-color: #eee,
     --shadow-color: rgba(0, 0, 0, 0.1),
-    --background-color: #fff7f9,
+    --background-color: #fdf9f9,
     --inactive-color: #D8D7D1,
     --body-text-color: #865c6c,
-    --heading-text-color: #000,
+    --heading-text-color: #292929,
     --white:#FFF,
     --badge-bg:#ffe380,
     --badge-color:#6e5d1c,
+
+    // Border radius
+    --radius-sm:8px,
+    --radius-md:15px,
+    --radius-lg: 25px,
+
+    // Navbar
+    --navbar-height:60px,
+
+    // Hero section
+    --hero-section-bg:#ffe2ec,
 
     // Border related
     --border-color: #20314F,

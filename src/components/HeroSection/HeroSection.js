@@ -1,7 +1,5 @@
 import React from "react";
-// import PeepOne from '../../assets/Images/peep-setting.svg';//Hamburger-pana
-import PeepOne from '../../assets/Images/Hamburger-pana.svg';//
-import { Link } from "react-router-dom";
+import PeepOne from '../../assets/Images/Cooking-cuate.svg';
 import "./HeroSection.scss";
 import Button from "../Button/Button";
 

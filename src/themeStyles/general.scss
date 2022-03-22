@@ -77,6 +77,14 @@ body {
     background-attachment: fixed;
 }
 
+.main {
+    padding: var(--padding-lg) 0;
+
+    @include media("<=tablet") {
+        padding: 0;
+    }
+}
+
 body {
     min-height: 100vh;
 }
@@ -88,6 +96,10 @@ body {
         gap: var(--padding-lg);
         grid-template-areas: "sidebar-1 main sidebar-2";
         padding: 0 1rem;
+    }
+
+    @include media("<desktop") {
+        padding: var(--space-lg);
     }
 
     .main {
@@ -116,7 +128,7 @@ body {
 
         &__inner {
             position: sticky;
-            top: calc(60px + var(--padding-lg));
+            top: calc(var(--navbar-height) + var(--padding-lg));
             display: flex;
             gap: var(--space-lg);
             align-items: flex-end;

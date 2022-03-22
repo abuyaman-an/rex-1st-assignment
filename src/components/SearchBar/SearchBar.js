@@ -37,14 +37,14 @@ const SearchBar = ({ value, onChange, onKeyPress, onSearchClick, busy }) => {
                     aria-labelledby="search-recipes-label"
                     aria-busy={busy ?? "false"}
                 />
+                <Button
+                    noShadow
+                    ariaLabel="Search"
+                    onClick={onSearchClick}
+                    primary={value.trim().length > 0}
+                    label="Search"
+                />
             </div>
-            <Button
-                noShadow
-                ariaLabel="Search"
-                onClick={onSearchClick}
-                primary={value.trim().length > 0}
-                label={<i className="las la-search"></i>}
-            />
         </div>
     )
 }
