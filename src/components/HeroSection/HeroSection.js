@@ -2,6 +2,7 @@ import React from "react";
 import PeepOne from '../../assets/Images/Cooking-cuate.svg';
 import "./HeroSection.scss";
 import Button from "../Button/Button";
+import Badge from "../Badge/Badge";
 
 const HeroSection = ({ title, description, callToActionLabel, callToActionLink }) => {
     /**
@@ -16,6 +17,7 @@ const HeroSection = ({ title, description, callToActionLabel, callToActionLink }
             <div className="hero-section__inner">
                 <img src={PeepOne} alt="A doodle of a guy sitting" />
                 <div className="hero-section__inner__text">
+                    <Badge message="new" className="self-start" type="primary" />
                     <h1 className="hero-section__title">{title}</h1>
                     <p className="big">{description}</p>
                     <Button

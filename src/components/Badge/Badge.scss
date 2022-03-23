@@ -8,6 +8,11 @@
     color: var(--badge-color);
     font-size: small;
 
+    &.badge-odd {
+        background-color: var(--badge-odd-bg);
+        color: var(--badge-odd-color);
+    }
+
     &.clickable {
         cursor: pointer;
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import NoResults from "../NoResults/NoResults";
 import ResultsError from "../ResultsError/ResultsError";
@@ -74,4 +74,4 @@ const RecipesList = ({ name, recipes, numToExpect, loading, actionComponent, act
     )
 }
 
-export default RecipesList;
+export default memo(RecipesList);

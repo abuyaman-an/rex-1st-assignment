@@ -4,7 +4,7 @@ $variables: ( // General colors
     --main-color: #ba839b,
     --main-color-d1: #aa8086,
     --secondary-color: #ba839b,
-    --secondary-color-d1: #0c3e55,
+    --secondary-color-d1: #6b3e52,
     --loading-element-color: #eee,
     --shadow-color: rgba(0, 0, 0, 0.1),
     --background-color: #fdf9f9,
@@ -12,8 +12,12 @@ $variables: ( // General colors
     --body-text-color: #865c6c,
     --heading-text-color: #292929,
     --white:#FFF,
-    --badge-bg:#ffe380,
-    --badge-color:#6e5d1c,
+
+    // Badge
+    --badge-bg:#d9c0c8,
+    --badge-color:#6b3e52,
+    --badge-odd-bg:#ffe380,
+    --badge-odd-color:#6e5d1c,
 
     // Border radius
     --radius-sm:8px,
