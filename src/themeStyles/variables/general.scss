@@ -3,7 +3,7 @@ $css4: false;
 $variables: ( // General colors
     --main-color: #ba839b,
     --main-color-d1: #aa8086,
-    --secondary-color: #1a759f,
+    --secondary-color: #ba839b,
     --secondary-color-d1: #0c3e55,
     --loading-element-color: #eee,
     --shadow-color: rgba(0, 0, 0, 0.1),
@@ -22,6 +22,7 @@ $variables: ( // General colors
 
     // Navbar
     --navbar-height:60px,
+    --active-nav-link:#ffe2ed,
 
     // Hero section
     --hero-section-bg:#ffe2ec,

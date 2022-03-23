@@ -1,5 +1,10 @@
 @import "../../themeStyles/main";
 
+.credits {
+    border-radius: 6px;
+    box-shadow: 0 10px 25px 0 rgb(0 0 0 / 10%);
+}
+
 .recipe-details {
     &__featured-img {
         width: 100%;
@@ -22,7 +27,7 @@
         border-top: 0;
 
         a {
-            font-weight: bold;
+            font-weight: 500;
             text-decoration: underline wavy var(--shadow-color);
         }
 

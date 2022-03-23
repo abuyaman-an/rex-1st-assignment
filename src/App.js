@@ -23,15 +23,15 @@ function App() {
     },
     {
       label: 'Second',
-      url: '#'
+      url: '/second'
     }
     , {
       label: 'Third',
-      url: '#'
+      url: '/third'
     }
     , {
       label: 'Fourth',
-      url: '#'
+      url: '/Fourth'
     }
   ]
   return (

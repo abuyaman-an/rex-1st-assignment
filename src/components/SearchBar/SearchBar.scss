@@ -10,7 +10,7 @@
 
         &:focus-within,
         &.active {
-            box-shadow: 0 10px 10px var(--shadow-color);
+            box-shadow: 0 10px 25px 0 var(--shadow-color);
             transform: translate(0, -10px);
             border-color: var(--border-color);
             background: var(--white);

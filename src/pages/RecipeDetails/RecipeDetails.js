@@ -78,7 +78,7 @@ const RecipeDetails = ({ randomRecipes, initRandomRecipes }) => {
             </MetaTags>
             <div className="sidebar-1">
                 <div className="sidebar-1__inner">
-                    <section>
+                    <section className="credits">
                         <h3>By <a target="_blank" rel="noreferrer" href={recipeData.sourceUrl}>{recipeData.sourceName}<i className="las la-external-link-alt"></i></a></h3>
                         <p>{recipeData.creditsText}</p>
                     </section>

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import "./Navbar.scss";
 
 const Navbar = ({ links }) => {
@@ -27,13 +27,21 @@ const Navbar = ({ links }) => {
         <nav className="navbar">
             <Link className="navbar__logo" to="/">Da'Recipe</Link>
             <div className="navbar__links-container" ref={navList}>
-                <ul className="navbar__links" >
+                <div className="navbar__links">
                     {
                         links?.map((link, index) => (
-                            <li key={index.toString()}><Link to={link.url}>{link.label}</Link></li>
+                            <NavLink
+                                key={index.toString()}
+                                onClick={CloseMenu}
+                                className={({ isActive }) =>
+                                    `navbar__link ${isActive ? "active" : ""}`
+                                }
+                                to={link.url}>
+                                {link.label}
+                            </NavLink>
                         ))
                     }
-                </ul>
+                </div>
                 <div aria-hidden='true' onClick={CloseMenu} className="navbar__links__overlay"></div>
             </div>
             <svg onClick={OpenMenu} xmlns="http://www.w3.org/2000/svg" className="navbar__m-expand-menu" fill="none" viewBox="0 0 24 24"
