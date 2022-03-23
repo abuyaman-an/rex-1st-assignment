@@ -29,7 +29,7 @@ const Navbar = ({ links }) => {
             <div className="navbar__links-container" ref={navList}>
                 <ul className="navbar__links" >
                     {
-                        links.map((link, index) => (
+                        links?.map((link, index) => (
                             <li key={index.toString()}><Link to={link.url}>{link.label}</Link></li>
                         ))
                     }

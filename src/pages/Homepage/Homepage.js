@@ -52,7 +52,7 @@ const Homepage = ({ healthyRecipes, randomRecipes, initHealthyRecipes, initRando
                         searchedTerm={searchedTerm}
                     />
                     <RecipesList
-                        numToExpect={4}
+                        numToExpect={8}
                         name="Random recipes"
                         recipes={randomRecipes.recipes}
                         actionLabel="Reload random recipes"
