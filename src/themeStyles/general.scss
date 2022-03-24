@@ -10,10 +10,6 @@ a {
     color: var(--content-link-color);
     text-decoration: none;
 
-    &:visited {
-        color: var(--content-link-color-visited);
-    }
-
     &:hover {
         color: var(--content-link-color-hover);
     }
@@ -148,7 +144,7 @@ body {
     &__grid {
         display: grid;
         gap: var(--space-lg);
-        padding: var(--padding-lg);
+        padding-top: var(--padding-lg);
 
         @include media(">=desktop") {
             padding: var(--padding-lg) 0;

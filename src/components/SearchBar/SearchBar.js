@@ -39,6 +39,7 @@ const SearchBar = ({ value, onChange, onKeyPress, onSearchClick, busy }) => {
                 />
                 <Button
                     noShadow
+                    className="search-bar__search-btn"
                     ariaLabel="Search"
                     onClick={onSearchClick}
                     primary={value.trim().length > 0}

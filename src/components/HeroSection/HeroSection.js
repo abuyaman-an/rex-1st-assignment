@@ -1,8 +1,9 @@
 import React from "react";
+
 import PeepOne from '../../assets/Images/Cooking-cuate.svg';
-import "./HeroSection.scss";
 import Button from "../Button/Button";
 import Badge from "../Badge/Badge";
+import "./HeroSection.scss";
 
 const HeroSection = ({ title, description, callToActionLabel, callToActionLink }) => {
     /**
