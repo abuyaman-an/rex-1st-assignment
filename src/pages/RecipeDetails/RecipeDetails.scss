@@ -10,8 +10,9 @@
         width: 100%;
         display: block;
         height: 250px;
-        border-top: none;
         border-radius: var(--radius-lg);
+        border: 1px solid var(--border-color);
+
     }
 
     &__title {

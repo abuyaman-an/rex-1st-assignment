@@ -41,7 +41,7 @@ const Homepage = ({ healthyRecipes, randomRecipes, initHealthyRecipes, initRando
                 <HeroSection
                     title="Welcome to Da'Recipe"
                     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                    callToActionLabel="About us! →"
+                    callToActionLabel={<>About us! <i class="las la-long-arrow-alt-right"></i></>}
                     callToActionLink="/about"
                 />
                 <div className="main-content__grid">

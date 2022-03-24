@@ -38,10 +38,10 @@ $img-radius:10px 10px;
         position: absolute;
         transition: .35s;
         z-index: 1;
-        gap: var(--space-xs);
+        gap: var(--space-2xs);
         top: var(--space-sm);
         right: var(--space-sm);
-        padding: 10px;
+        padding: 4px 10px;
         border-radius: 20px;
 
         @include media(">=desktop") {
@@ -61,7 +61,6 @@ $img-radius:10px 10px;
 
     &__img-container {
         position: relative;
-        border-radius: $img-radius 0 50px;
     }
 
     &__arrow {
@@ -138,8 +137,8 @@ $img-radius:10px 10px;
 
         .#{$single_selector}__dish-type {
             background: var(--loading-element-color);
-            width: 15%;
-            height: 14px;
+            width: 20%;
+            height: 18px;
             border-radius: 10px;
         }
 
@@ -162,6 +161,7 @@ $img-radius:10px 10px;
             .single-recipe__img {
                 opacity: 1;
                 border-bottom-left-radius: 65px;
+                border-color: var(--badge-odd-bg);
             }
 
             .single-recipe__arrow {

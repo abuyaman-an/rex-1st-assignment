@@ -15,7 +15,6 @@ const SingleRecipeItem = ({ image, title, description, link, dishTypes, veryHeal
      * @param {boolean} [veryHealthy] - (optional) Shows if this recipe is a healthy recipe
      * @param {boolean} [loading] - (optional) Shows if the card/recipe is loading.
      */
-
     // If loading it shows an empty card that have some loading animations.
     if (loading)
         return (
@@ -43,20 +42,20 @@ const SingleRecipeItem = ({ image, title, description, link, dishTypes, veryHeal
                 {
                     // If veryHealthy is true shows a health badge on the recipe.
                     veryHealthy &&
-                    <i className="single-recipe__health-score las la-apple-alt" aria-label="Healthy recipe badge"></i>
+                    <i className="single-recipe__health-score las la-apple-alt" title="Healthy recipe badge" aria-label="Healthy recipe badge"></i>
                 }
                 {
                     image &&
                     <div className='single-recipe__img-container'>
                         <img className='single-recipe__img' loading="lazy" src={image} alt={title} />
                         <div className='single-recipe__share'>
-                            <a href={`https://www.facebook.com/sharer/sharer.php?u=${link}`} tabIndex="-1">
+                            <a title="Share on Facebook" href={`https://www.facebook.com/sharer/sharer.php?u=${link}`} tabIndex="-1">
                                 <i className="lab la-facebook-f"></i>
                             </a>
-                            <a href={`https://www.facebook.com/sharer/sharer.php?u=${link}`} tabIndex="-1">
+                            <a title="Share on Twitter" href={`https://www.facebook.com/sharer/sharer.php?u=${link}`} tabIndex="-1">
                                 <i className="lab la-twitter"></i>
                             </a>
-                            <a href={`https://www.facebook.com/sharer/sharer.php?u=${link}`} tabIndex="-1">
+                            <a title="Share on Pinterest" href={`https://www.facebook.com/sharer/sharer.php?u=${link}`} tabIndex="-1">
                                 <i className="lab la-pinterest"></i>
                             </a>
                         </div>
@@ -71,7 +70,7 @@ const SingleRecipeItem = ({ image, title, description, link, dishTypes, veryHeal
                         </div>
                     }
                     <Link to={link}>
-                        <h2 title={title} className="single-recipe__title">{truncateString(title, 40)}</h2>
+                        <h3 title={title} className="single-recipe__title">{truncateString(title, 40)}</h3>
                     </Link>
                     {
                         description &&

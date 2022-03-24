@@ -51,6 +51,7 @@
     padding: 0 8px 0 var(--space-md);
     justify-content: flex-start;
     background-color: var(--white);
+    gap: var(--space-md);
 
     &__input {
         flex: 1;
@@ -59,8 +60,6 @@
         outline: none;
         font-size: 14px;
         background-color: transparent;
-        // border-right: 1px solid var(--border-color);
-        // margin-right: 10px;
 
         &:focus {
             outline: none;
@@ -72,7 +71,6 @@
         color: var(--border-color);
         font-size: 24px;
         transition: .3s;
-        margin-right: var(--space-md);
     }
 
     &__search-btn {

@@ -9,7 +9,7 @@
     justify-content: space-between;
     gap: 20px;
     padding: var(--padding-lg);
-    border-bottom: var(--border-width) solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
     height: var(--navbar-height);
 
     &__m-expand-menu {
@@ -33,7 +33,7 @@
     &__links {
         gap: var(--padding-sm);
         background: var(--white);
-        border-left: var(--border-width) solid var(--border-color);
+        border-left: 1px solid var(--border-color);
         padding: 20px;
         height: 100vh;
     }
