@@ -29,7 +29,7 @@ const SingleRecipeItem = ({ image, title, description, link, dishTypes, veryHeal
                         <h2 className="single-recipe__title" aria-hidden="true"></h2>
                         <p className="single-recipe__desc"></p>
                         <div to={link} className="single-recipe__arrow" aria-hidden="true" tabIndex="-1">
-                            <i class="las la-long-arrow-alt-right"></i>
+                            <i className="las la-long-arrow-alt-right"></i>
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@ const SingleRecipeItem = ({ image, title, description, link, dishTypes, veryHeal
                         <p className="single-recipe__desc">{truncateString(stripHTML(description))}</p>
                     }
                     <Link to={link} className="single-recipe__arrow" aria-hidden="true" tabIndex="-1">
-                        <i class="las la-long-arrow-alt-right"></i>
+                        <i className="las la-long-arrow-alt-right"></i>
                     </Link>
                 </div>
 

@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import NavUser from '../NavUser/NavUser';
 import "./Navbar.scss";
 
-const Navbar = ({ links }) => {
+const Navbar = ({ links, hasProgressBar }) => {
     /**
      * The main navbar component.
      * @param {Array} links - An array of object that each represent a navbar link, each link should contain two attributes {label:string, link:string}.
@@ -25,6 +26,10 @@ const Navbar = ({ links }) => {
 
     return (
         <nav className="navbar">
+            {
+                hasProgressBar &&
+                <div className="navbar__progress-bar" />
+            }
             <Link className="navbar__logo" to="/">Da'Recipe</Link>
             <div className="navbar__links-container" ref={navList}>
                 <div className="navbar__links">
@@ -48,6 +53,7 @@ const Navbar = ({ links }) => {
                 stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
+            <NavUser />
         </nav>
     )
 }

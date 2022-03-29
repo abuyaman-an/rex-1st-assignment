@@ -92,7 +92,7 @@ body {
         grid-template-columns: minmax(0, 1fr) minmax(0, 1024px) minmax(0, 1fr);
         gap: var(--padding-lg);
         grid-template-areas: "sidebar-1 main sidebar-2";
-        padding: 0 1rem;
+        // padding: 0 1rem;
     }
 
     @include media("<desktop") {
@@ -105,6 +105,8 @@ body {
 
     .sidebar-1 {
         grid-area: sidebar-1;
+        background: var(--white);
+        border-right: 1px solid var(--border-color);
     }
 
     .sidebar-2 {
@@ -134,8 +136,10 @@ body {
 
         section {
             background-color: var(--white);
+            border-radius: var(--radius-sm) 0 0 var(--radius-sm);
             padding: var(--padding-lg);
-            border: var(--border-width) solid var(--border-color);
+            border: 1px solid var(--border-color);
+            border-right: 0;
             max-width: 350px;
             width: 100%;
         }

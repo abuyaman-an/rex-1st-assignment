@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useParams } from 'react-router-dom';
 import { MetaTags } from "react-meta-tags";
 import Parser from 'html-react-parser';
@@ -61,6 +61,25 @@ const RecipeDetails = ({ randomRecipes, initRandomRecipes }) => {
             console.error(`**ERR:fetchSimilarRecipe ${error}`);
         }
     }
+
+    let processScroll = () => {
+        let docElem = document.documentElement,
+            docBody = document.body,
+            scrollTop = docElem['scrollTop'] || docBody['scrollTop'],
+            scrollBottom = (docElem['scrollHeight'] || docBody['scrollHeight']) - window.innerHeight,
+            scrollPercent = scrollTop / scrollBottom * 100 + '%';
+
+        document.querySelector('.navbar__progress-bar').style.width = scrollPercent;
+    }
+
+    useEffect(() => {
+        document.addEventListener("scroll", processScroll);
+
+        return () => {
+            document.removeEventListener("scroll", processScroll);
+        }
+    }, [])
+
 
     // If still loading the request, show a loading indicator.
     if (loading)

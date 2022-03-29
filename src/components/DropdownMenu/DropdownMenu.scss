@@ -1,0 +1,37 @@
+@import "../../themeStyles/main";
+
+.menu {
+    margin-left: auto;
+    position: relative;
+
+    .menu-items {
+        transition: .3s;
+        overflow: hidden;
+        min-width: 10rem;
+        max-width: 12rem;
+        margin-top: var(--space-xs);
+        top: 100%;
+        right: 2px;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        padding: var(--padding-md) 0;
+        border: 1px solid var(--border-color);
+        border-radius: var(--padding-md);
+        border-top-right-radius: var(--padding-xs);
+        box-shadow: 0 10px 25px 0 var(--shadow-color);
+        font-size: 14px;
+
+        .menu__item {
+            padding: var(--padding-xs) var(--padding-md);
+            &.active{
+                background-color: red;
+            }
+        }
+
+        .menu__empty-message {
+            padding: var(--padding-xs) var(--padding-md);
+        }
+    }
+}

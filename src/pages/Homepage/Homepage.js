@@ -17,9 +17,12 @@ const Homepage = ({ healthyRecipes, randomRecipes, initHealthyRecipes, initRando
     const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
-        // Dispatch fetch sections recipes on mount
-        initRandomRecipes();
-        initHealthyRecipes(4);
+        // Dispatch fetch sections recipes on mount if no results exist!
+        if (randomRecipes.recipes.length === 0) {
+            initRandomRecipes();
+        }
+        if (healthyRecipes.recipes.length === 0)
+            initHealthyRecipes();
     }, [])
 
     const triggerSearch = (term) => {
@@ -41,7 +44,7 @@ const Homepage = ({ healthyRecipes, randomRecipes, initHealthyRecipes, initRando
                 <HeroSection
                     title="Welcome to Da'Recipe"
                     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                    callToActionLabel={<>About us! <i class="las la-long-arrow-alt-right"></i></>}
+                    callToActionLabel={<>About us! <i className="las la-long-arrow-alt-right"></i></>}
                     callToActionLink="/about"
                 />
                 <div className="main-content__grid">

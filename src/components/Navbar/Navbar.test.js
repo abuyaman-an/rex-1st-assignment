@@ -7,7 +7,13 @@ import Enzyme from 'enzyme';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("Navbar links", () => {
-    let wrapper = shallow(<Navbar />);
+    const context = {
+        links: []
+    };
+
+
+    let wrapper = shallow(<Navbar links={[]} />, { context });
+    expect(wrapper.find(".navbar__link")).to.have.lengthOf.at.least(0);
 
     wrapper.setProps({
         links: [
@@ -21,8 +27,6 @@ describe("Navbar links", () => {
             }
         ]
     });
+    expect(wrapper.find(".navbar__link")).to.have.lengthOf.at.least(2);
 
-    it("should have two links, two links passed via props.", () => {
-        expect(wrapper.find("ul.navbar__links li")).to.have.lengthOf(2);
-    });
-})
+});
